@@ -1,0 +1,32 @@
+cd /mnt/c/Users/Alvin/Downloads/113-2-NCKU-CompilerHW2-main
+
+flex scanner.l
+gcc -Wall -o myscanner lex.yy.c -lfl
+**********
+cd /mnt/c/Users/Alvin/Downloads/113-2-NCKU-CompilerHW2-main
+
+make judge
+judge -v 1
+
+**********
+make clean && make
+
+./myscanner < input/a00_helloWorld_comment.rs > output/a00_helloWorld_comment.out
+diff asnwer/a00_helloWorld_comment.out output/a00_helloWorld_comment.out -y
+
+./myscanner < input/a01_arithmetic.rs > output/a01_arithmetic.out
+diff answer/a01_arithmetic.out output/a01_arithmetic.out -y
+
+./myscanner < input/a02_precedence.rs > output/a02_precedence.out
+diff answer/a02_precedence.out output/a02_precedence.out -y
+
+./myscanner < input/a03_scope.rs > output/a03_scope.out
+diff answer/a03_scope.out output/a03_scope.out -y
+
+**********
+
+git diff --no-index --color-words answer/a00_helloWorld_comment.out output/a00_helloWorld_comment.out
+
+make clean && make && ./myscanner < input/a00_helloWorld_comment.rs > output/a00_helloWorld_comment.out && diff answer/a00_helloWorld_comment.out output/a00_helloWorld_comment.out -y
+
+make clean && make && ./myscanner < input/a09_error.rs > output/a09_error.out && diff answer/a09_error.out output/a09_error.out -y

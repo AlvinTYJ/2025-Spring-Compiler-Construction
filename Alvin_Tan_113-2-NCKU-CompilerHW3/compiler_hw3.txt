@@ -1,0 +1,43 @@
+cd /mnt/c/Users/Alvin/Downloads/113-2-CompilerHW3-main
+
+java -Xverify:all Main
+
+rm -f Main.class
+java -jar jasmin.jar hw3.j
+java -cp . Main
+
+**********
+make clean && make
+
+rm -f Main.class && ./mycompiler < {input} && make -s Main.class && make -s run > {output}
+
+rm -f Main.class && ./mycompiler < input/a00_helloWorld_comment.rs && make -s Main.class && make -s run > output/a00_helloWorld_comment.out
+diff answer/a00_helloWorld_comment.out output/a00_helloWorld_comment.out -y
+
+rm -f Main.class && ./mycompiler < input/a01_arithmetic.rs && make -s Main.class && make run > output/a01_arithmetic.out
+diff answer/a01_arithmetic.out output/a01_arithmetic.out -y
+
+rm -f Main.class && ./mycompiler < input/a02_precedence.rs && make -s Main.class && make run > output/a02_precedence.out
+diff answer/a02_precedence.out output/a02_precedence.out -y
+
+rm -f Main.class && ./mycompiler < input/a03_scope.rs && make -s Main.class && make run > output/a03_scope.out
+diff answer/a03_scope.out output/a03_scope.out -y
+
+rm -f Main.class && ./mycompiler < input/a04_assigment.rs && make -s Main.class && make run > output/a04_assigment.out
+diff answer/a04_assigment.out output/a04_assigment.out -y
+
+rm -f Main.class && ./mycompiler < input/a05_casting.rs && make -s Main.class && make run > output/a05_casting.out
+diff answer/a05_casting.out output/a05_casting.out -y
+
+rm -f Main.class && ./mycompiler < input/a06_if.rs && make -s Main.class && make run > output/a06_if.out
+diff answer/a06_if.out output/a06_if.out -y
+
+rm -f Main.class && ./mycompiler < input/a07_while.rs && make -s Main.class && make run > output/a07_while.out
+diff answer/a07_while.out output/a07_while.out -y
+
+**********
+
+rm -f Main.class && ./mycompiler < input/a02_precedence.rs && make -s Main.class && make run > output/a02_precedence.out
+diff answer/a02_precedence.out output/a02_precedence.out -y
+
+rm -f Main.class && ./mycompiler < true.rs && make -s Main.class && make run > true.out

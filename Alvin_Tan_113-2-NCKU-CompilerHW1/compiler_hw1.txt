@@ -1,0 +1,48 @@
+cd /mnt/c/Users/Alvin/Downloads/113-2-NCKU-CompilerHW1-main
+
+cd /c/Users/User/Downloads/113-2-NCKU-CompilerHW1-main
+flex scanner.l
+gcc -Wall -o myscanner lex.yy.c -lfl
+**********
+./myscanner < input/a00_helloWorld_comment.rs > output/a00_helloWorld_comment.out
+diff -y output/a00_helloWorld_comment.out answer/a00_helloWorld_comment.out
+
+cat answer/a00_helloWorld_comment.out
+./myscanner input/a00_helloWorld_comment.rs
+./myscanner a01_arithmetic.rs
+./myscanner a02_precedence.rs
+./myscanner a03_scope.rs
+./myscanner a04_assigment.rs
+./myscanner a05_casting.rs
+./myscanner a06_if.rs
+./myscanner a07_while.rs
+./myscanner a08_function.rs
+./myscanner a09_array.rs
+./myscanner a10_error.rs
+./myscanner b01_auto_type_detection.rs
+./myscanner b02_loop.rs
+./myscanner b03_foreach.rs
+./myscanner b04_2d_array.rs
+./myscanner b05_slice.rs
+
+make judge
+judge -v 1
+
+**********
+./myscanner < input/a00_helloWorld_comment.rs > output/a00_helloWorld_comment.out
+diff -y output/a00_helloWorld_comment.out answer/a00_helloWorld_comment.out
+
+git diff --no-index --color-words answer/a00_helloWorld_comment.out output/a00_helloWorld_comment.out
+
+make clean && make && ./myscanner < input/a00_helloWorld_comment.rs > output/a00_helloWorld_comment.out && diff answer/a00_helloWorld_comment.out output/a00_helloWorld_comment.out -y
+
+make clean && make && ./myscanner < input/a01_arithmetic.rs > output/a01_arithmetic.out && diff answer/a01_arithmetic.out output/a01_arithmetic.out -y
+
+make clean && make && ./myscanner < input/a02_precedence.rs > output/a02_precedence.out && diff answer/a02_precedence.out output/a02_precedence.out -y
+
+make clean && make && ./myscanner < input/a03_scope.rs > output/a03_scope.out && diff answer/a03_scope.out output/a03_scope.out -y
+
+
+
+
+make clean && make && ./myscanner < input/b05_slice.rs > output/b05_slice.out && diff answer/b05_slice.out output/b05_slice.out -y
